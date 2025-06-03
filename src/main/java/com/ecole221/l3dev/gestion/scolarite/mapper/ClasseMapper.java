@@ -2,7 +2,7 @@ package com.ecole221.l3dev.gestion.scolarite.mapper;
 
 import com.ecole221.l3dev.gestion.scolarite.dto.CreateClasseRequest;
 import com.ecole221.l3dev.gestion.scolarite.dto.CreateClasseResponse;
-import com.ecole221.l3dev.gestion.scolarite.dto.FiliereDto;
+//import com.ecole221.l3dev.gestion.scolarite.dto.FiliereDto;
 import com.ecole221.l3dev.gestion.scolarite.model.Classe;
 import com.ecole221.l3dev.gestion.scolarite.model.Filiere;
 import org.springframework.stereotype.Component;
