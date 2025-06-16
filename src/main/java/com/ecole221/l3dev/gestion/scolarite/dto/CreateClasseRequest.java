@@ -33,4 +33,5 @@ public class CreateClasseRequest {
     private Integer autreFrais;
     @NotNull(message = "Filiere obligatoire")
     private long filiereId;
+
 }
