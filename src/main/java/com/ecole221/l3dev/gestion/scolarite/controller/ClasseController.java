@@ -6,6 +6,8 @@ import com.ecole221.l3dev.gestion.scolarite.helper.ClasseHelper;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/classes")
 public class ClasseController {
@@ -15,9 +17,12 @@ public class ClasseController {
         this.classeHelper = classeHelper;
     }
     @PostMapping
-    public @ResponseBody CreateClasseRequest save (@RequestBody @Valid CreateClasseRequest classeRequest){
-//        return classeHelper.save(classeRequest);
-       return classeRequest;
+    public @ResponseBody CreateClasseResponse save (@RequestBody @Valid CreateClasseRequest classeRequest){
+        return classeHelper.save(classeRequest);
+    }
+    @GetMapping
+    public @ResponseBody List<CreateClasseResponse> allClasses (){
+        return classeHelper.findAll();
     }
 
 }

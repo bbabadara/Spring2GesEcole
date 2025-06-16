@@ -21,7 +21,7 @@ public class Classe {
     private int fraisInscription;
     private int mensualite;
     private int autreFrais;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "filiere_id")
     private Filiere filiere;
 

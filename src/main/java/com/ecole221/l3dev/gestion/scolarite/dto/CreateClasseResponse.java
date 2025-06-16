@@ -1,6 +1,5 @@
 package com.ecole221.l3dev.gestion.scolarite.dto;
 
-import com.ecole221.l3dev.gestion.scolarite.model.Filiere;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +16,5 @@ public class CreateClasseResponse {
     private int fraisInscription;
     private int mensualite;
     private int autreFrais;
-    private Filiere filiere;
+    private FiliereDto filiere;
 }
