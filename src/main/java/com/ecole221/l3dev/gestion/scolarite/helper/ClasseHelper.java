@@ -3,9 +3,11 @@ package com.ecole221.l3dev.gestion.scolarite.helper;
 import com.ecole221.l3dev.gestion.scolarite.dto.CreateClasseRequest;
 import com.ecole221.l3dev.gestion.scolarite.dto.CreateClasseResponse;
 import com.ecole221.l3dev.gestion.scolarite.exception.ScolariteException;
+import com.ecole221.l3dev.gestion.scolarite.exception.ScolariteNotFoundException;
 import com.ecole221.l3dev.gestion.scolarite.mapper.ClasseMapper;
 import com.ecole221.l3dev.gestion.scolarite.model.Classe;
 import com.ecole221.l3dev.gestion.scolarite.service.IClasse;
+import com.ecole221.l3dev.gestion.scolarite.service.IFiliere;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,10 +16,12 @@ import java.util.List;
 public class ClasseHelper {
     private final IClasse iClasse;
     private final ClasseMapper classeMapper;
+    private final IFiliere iFiliere;
 
-    public ClasseHelper(IClasse iClasse, ClasseMapper classeMapper) {
+    public ClasseHelper(IClasse iClasse, ClasseMapper classeMapper, IFiliere iFiliere) {
         this.iClasse = iClasse;
         this.classeMapper = classeMapper;
+        this.iFiliere = iFiliere;
     }
 
     public CreateClasseResponse save(CreateClasseRequest classeRequest) {
@@ -32,13 +36,21 @@ public class ClasseHelper {
 //         classe = iClasse.save(classe);
 //         CreateClasseResponse createClasseResponse= classeMapper.classeEntityToCreateClasseResponse(classe) ;
 //         return createClasseResponse;
+        Classe classe = iClasse.save(classeMapper.createClasseRequestToClasseEntity(classeRequest));
+         classe.getFiliere().setLibelle(iFiliere.findById(classe.getFiliere().getId()).getLibelle());
 
-        return classeMapper.classeEntityToCreateClasseResponse(
-               iClasse.save(classeMapper.createClasseRequestToClasseEntity(classeRequest))
-        );
+        return classeMapper.classeEntityToCreateClasseResponse(classe);
     }
 
     public List<CreateClasseResponse> findAll() {
         return iClasse.findAll().stream().map(classeMapper::classeEntityToCreateClasseResponse).toList();
+    }
+
+    public CreateClasseResponse findById(long id) {
+        Classe classe = iClasse.findById(id);
+        if (classe==null){
+            throw new ScolariteNotFoundException("Classe avec id "+id+" introuvable");
+        }
+        return classeMapper.classeEntityToCreateClasseResponse(classe);
     }
 }
