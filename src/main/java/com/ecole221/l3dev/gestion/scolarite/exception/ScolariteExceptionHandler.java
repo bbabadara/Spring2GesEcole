@@ -2,7 +2,6 @@ package com.ecole221.l3dev.gestion.scolarite.exception;
 
 import com.ecole221.l3dev.gestion.scolarite.dto.ErrorDto;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

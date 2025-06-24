@@ -38,4 +38,19 @@ public class ClasseService implements IClasse {
         return classeRepository.findByLibelle(libelle);
     }
 
+    @Override
+    public List<Classe> findClassesWithoutThisCode(String code) {
+        return classeRepository.findClassesWithoutThisCode(code);
+    }
+
+    @Override
+    public List<Classe> findClassesWithoutThisLibelle(String libelle) {
+        return classeRepository.findClassesWithoutThisLibelle(libelle);
+    }
+
+    @Override
+    public void delete(Classe classe) {
+        classeRepository.delete(classe);
+    }
+
 }

@@ -14,4 +14,9 @@ public interface IClasse {
     Classe findByCode(String code);
 
     Classe findByLibelle(String libelle);
+
+    List<Classe> findClassesWithoutThisCode(String code);
+    List<Classe> findClassesWithoutThisLibelle(String libelle);
+
+    void delete(Classe classe);
 }

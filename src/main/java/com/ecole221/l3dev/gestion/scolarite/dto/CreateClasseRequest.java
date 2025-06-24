@@ -1,6 +1,5 @@
 package com.ecole221.l3dev.gestion.scolarite.dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
